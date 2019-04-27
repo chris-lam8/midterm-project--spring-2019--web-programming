@@ -1,0 +1,10 @@
+input, select, textarea {
+  font: 1em "Hind", sans-serif;
+}
+
+button {
+  border: 0;
+  background-color: #aaa;
+  color: #fff;
+  padding: 7px;
+}
