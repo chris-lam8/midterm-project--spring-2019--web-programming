@@ -1,34 +1,32 @@
-var paddle2 =10,paddle1=10;
+var paddle2 = 10, paddle1 = 10;
 
-var paddle1X = 10,paddle1Height = 100;
-var paddle2Y = 480,paddle2Height = 100;
-var restart= 0;
-var score1 = 0, score2 =0;
+var paddle1X = 10, paddle1Height = 100;
+var paddle2Y = 480, paddle2Height = 100;
+var restart = 0;
 var paddle1Y;
 
 
-var  playerscore =0;
-var audio1;
-var pcscore =0;
+var playerscore = 0;
+var pcscore = 0;
 //ball x and y and speedx speed y and radius
 var ball = {
-    x:300,
-    y:250,
-    r:20,
-    dx:7,
-    dy:7
+    x: 300,
+    y: 250,
+    r: 20,
+    dx: 7,
+    dy: 7
 };
 
 var paddle2y;
-var beep = new Audio("https://raw.githubusercontent.com/chris-lam8/midterm-project--spring-2019--web-programming/christopher-lam--chris-lam8/ping_pong_8bit_beeep.ogg");
-//when you leave the page 
+var beep = new Audio("./ping_pong_8bit_beeep.ogg");
+
 var colors = [
     "#7EA2A9",
     "#FCF7F8",
     "#CED3DC",
     "#4E8098",
     "#90C2E7"];
-    
+
 function setup(){
     var cvs = createCanvas(500,500);
     var x = (windowWidth - 500) / 2;
@@ -39,22 +37,22 @@ function setup(){
 
 function draw(){
 
-   background(0); 
-   
+   background(0);
+
    paddleInCanvas();
- 
+
    fill(214,186,27);
    stroke(250,250,250);
    paddle1Y = mouseY; rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
-   
+
    fill(53,129,190);
     stroke(250,250,250);
     paddle2y = ball.y-paddle2Height/2; rect(paddle2Y,paddle2y,paddle2,paddle2Height,100);
-    
+
     midline();
     drawScore();
     move();
-    
+
 }
 
 function mouseClicked() {
@@ -63,7 +61,7 @@ function mouseClicked() {
       loop();
       redraw();
   }
-   
+
     var color = colors.shift();
     colors.push(color);
     document.body.style.backgroundColor = color;
@@ -74,7 +72,7 @@ function reset(){
    ball.y = random(20,480);
    ball.dx = 6;
    ball.dy = 6;
-   
+
 }
 
 function midline(){
@@ -107,7 +105,7 @@ function move(){
    ellipse(ball.x,ball.y,ball.r,20)
    ball.x = ball.x + ball.dx;
    ball.y = ball.y + ball.dy;
-   var temp = random(0,1); 
+   var temp = random(0,1);
    if(ball.x+ball.r>width-ball.r/2){
        ball.dx=-ball.dx;                //This is when he hits it
        beep.play();
@@ -143,7 +141,7 @@ function move(){
     }
    if(ball.y+ball.r > height || ball.y-ball.r <0){
        ball.dy =- ball.dy;
-   }   
+   }
 }
 
 function paddleInCanvas(){
