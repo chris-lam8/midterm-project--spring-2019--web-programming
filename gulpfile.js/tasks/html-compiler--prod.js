@@ -1,11 +1,17 @@
-const { src, dest } = require(`gulp`);
-const htmlCompressor = require(`gulp-htmlmin`);
+const { src, dest } = require('gulp')
+const HTMLCompressor = require(`gulp-htmlmin`)
 
-let compressHTML = () => {
-    return src(`uncompressed/*.html`)
-        .pipe(htmlCompressor({collapseWhitespace: true}))
-        .pipe(dest(`compressed/`));
+
+const compileHTMLForProd = () => {
+
+    return src([
+        `./app/uncompressed/*.html`,
+        `./app/uncompressed/**/*.html`])
+        .pipe(HTMLCompressor({
+            removeComments: true,
+            collapseWhitespace: true
+        }))
+        .pipe(dest(`./app/compressed/html`))
 }
 
-exports.compressHTMLForProd = compressHTMLForProd;
-
+exports.compileHTMLForProd;
