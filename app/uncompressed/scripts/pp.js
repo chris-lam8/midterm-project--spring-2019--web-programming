@@ -22,13 +22,19 @@ var ball = {
 var paddle2y;
 var beep = new Audio("https://raw.githubusercontent.com/chris-lam8/midterm-project--spring-2019--web-programming/christopher-lam--chris-lam8/ping_pong_8bit_beeep.ogg");
 //when you leave the page 
+var colors = [
+    "#7EA2A9",
+    "#FCF7F8",
+    "#CED3DC",
+    "#4E8098",
+    "#90C2E7"];
+    
 function setup(){
     var cvs = createCanvas(500,500);
     var x = (windowWidth - 500) / 2;
     var y = (windowHeight - 500) / 2;
     cvs.position(x, y);
     background(0);
- 
 }
 
 function draw(){
@@ -41,7 +47,7 @@ function draw(){
    stroke(250,250,250);
    paddle1Y = mouseY; rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
    
-    fill(53,129,190);
+   fill(53,129,190);
     stroke(250,250,250);
     paddle2y = ball.y-paddle2Height/2; rect(paddle2Y,paddle2y,paddle2,paddle2Height,100);
     
@@ -57,6 +63,10 @@ function mouseClicked() {
       loop();
       redraw();
   }
+   
+    var color = colors.shift();
+    colors.push(color);
+    document.body.style.backgroundColor = color;
 }
 
 function reset(){
@@ -82,6 +92,7 @@ function drawScore(){
     textAlign(CENTER);
     textSize(20);
     fill(250,250,250);
+    textFont('Ubuntu');
     text("Player:",125,50)
     text(playerscore,170,50);
     text("Computer:",375,50)
@@ -100,11 +111,17 @@ function move(){
    if(ball.x+ball.r>width-ball.r/2){
        ball.dx=-ball.dx;                //This is when he hits it
        beep.play();
+        var color = colors.shift();
+        colors.push(color);
+        document.body.style.backgroundColor = color;
    }
    if (ball.x-2.5*ball.r/2< 0){
       if (ball.y >= paddle1Y && ball.y <= paddle1Y + paddle1Height) {   //This is when we hit it
         ball.dx =- ball.dx;
         beep.play();
+        color = colors.shift();
+        colors.push(color);
+        document.body.style.backgroundColor = color;
       }
       else{
         pcscore++;
@@ -118,8 +135,8 @@ function move(){
         rect(0,0,width,height-1);
         fill(0,0,0);
         textSize(20)
-        text("Game Over! You will never win.",width/2,height/2);
-        text("Click Mouse Button to restart",width/2,height/2+30)
+        text("Game Over! You Will Never Win.",width/2,height/2);
+        text("Click Mouse Button to Restart :)",width/2,height/2+30)
         noLoop();
         pcscore = 0;
         restart = 1;

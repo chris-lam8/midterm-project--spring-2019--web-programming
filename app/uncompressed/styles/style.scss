@@ -1,7 +1,23 @@
 $bg-color: rgba(169,169,169, 1);
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 body {
-	background-color: $bg-color;
-    position:fixed;
-    
+	background-color: $bg-color; 
+	font-family: 'Ubuntu', sans-serif;
+	transition: background-color 0.5s ease;   
 }
+
+.pos{
+    position: fixed;
+     top: 85%;
+    left: 0;
+    right: 0;
+    height: 0;
+    text-align: center;
+}
+
+h1{
+	text-align: center;
+	margin-top: 60px;
+}
+

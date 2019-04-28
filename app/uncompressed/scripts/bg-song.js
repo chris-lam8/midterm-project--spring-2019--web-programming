@@ -1,8 +1,8 @@
 let song;
 
 function setup() {
-  song = loadSound('assets/lucky_dragons_-_power_melody.mp3');
-  createCanvas(720, 200);
+  song = loadSound('https://github.com/chris-lam8/midterm-project--spring-2019--web-programming/blob/christopher-lam--chris-lam8/bg-song.mp3');
+  createCanvas(100, 100);
   background(255, 0, 0);
 }
 
