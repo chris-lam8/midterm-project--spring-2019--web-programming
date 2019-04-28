@@ -77,7 +77,7 @@ let transpileJSForDev = () => {
 };
 
 let transpileJSForProd = () => {
-    return src(`./app/dev/scripts/*.js`)
+    return src(`./app/dev/scripts/**/*.js`)
         .pipe(babel())
         .pipe(jsCompressor())
         .pipe(dest(`./app/prod/scripts`));
@@ -99,7 +99,7 @@ let serve = () => {
         }
     });
 
-    watch(`dev/scripts/*.js`,
+    watch(`./app/dev/scripts/**/*.js`,
         series(transpileJSForDev)
     ).on(`change`, reload);
 
@@ -153,5 +153,5 @@ exports.build = series(
     transpileJSForProd,
     transpileJSForDev
 );
-exports.serve = series(compileCSSForDev, validateHTML, serve);
+exports.serve = series(compileCSSForDev, validateHTML, transpileJSForDev, serve);
 exports.default = listTasks;

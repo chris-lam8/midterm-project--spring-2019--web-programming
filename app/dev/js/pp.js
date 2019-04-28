@@ -17,7 +17,7 @@ var ball = {
   dy: 7
 };
 var paddle2y;
-var beep = new Audio("./ping_pong_8bit_beeep.ogg");
+var beep = new Audio("https://raw.githubusercontent.com/chris-lam8/midterm-project--spring-2019--web-programming/christopher-lam--chris-lam8/ping_pong_8bit_beeep.ogg");
 var colors = ["#7EA2A9", "#FCF7F8", "#CED3DC", "#4E8098", "#90C2E7"];
 
 function setup() {
